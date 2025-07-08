@@ -1,10 +1,18 @@
 'use strict';
 
-const spider = document.querySelector('.spider');
-const wall = document.querySelector('.wall');
+document.addEventListener('click', (e) => {
+  const wall = e.target.closest('.wall');
 
-wall.addEventListener('click', (e) => {
-  // write code here
+  if (!wall) {
+    return;
+  }
+
+  const spider = wall.querySelector('.spider');
+
+  if (!spider) {
+    return;
+  }
+
   const wallRect = wall.getBoundingClientRect();
   const border = parseFloat(getComputedStyle(wall).borderLeftWidth);
   const mouseX = e.clientX;
